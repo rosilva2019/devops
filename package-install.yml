@@ -1,0 +1,8 @@
+---
+- hosts: devops
+  tasks:
+
+    - name: install the latest version of htop
+      yum:
+        name: dos2unix
+        state: latest

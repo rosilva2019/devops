@@ -1,0 +1,18 @@
+---
+- hosts: app-dev-01
+
+  tasks:
+  - name: Realizando autenticação no Google Container Registry...
+    shell: docker login -u oauth2accesstoken -p "$(gcloud auth application-default print-access-token)" https://gcr.io
+
+  - name: Realizando docker pull...
+    shell: gcloud docker -- pull us.gcr.io/previdenciasnsl/previdencia-core:latest
+
+  - name: Removendo container em execução...
+    shell: docker rm -f previdencia.core
+
+  - name: Realizando o deploy de novo container...
+    shell: docker run -d --name previdencia.core -p 8290:8290/tcp --env-file=/export/infra-ansible/enviroments/previdencia/core/PREVIDENCIA.env -ti us.gcr.io/previdenciasnsl/previdencia-core:latest
+
+  - name: Removendo imagens...
+    shell: docker images prune --all
