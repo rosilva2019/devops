@@ -4,5 +4,5 @@
 
     - name: install the latest version of htop
       yum:
-        name: dos2unix
+        name: subversion
         state: latest
