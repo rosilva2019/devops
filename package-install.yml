@@ -2,7 +2,7 @@
 - hosts: devops
   tasks:
 
-    - name: install the latest version of htop
+    - name: install the latest version of package RPM
       yum:
         name: subversion
-        state: latest
+        state: absent
