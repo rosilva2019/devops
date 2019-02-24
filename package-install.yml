@@ -5,4 +5,4 @@
     - name: install the latest version of package RPM
       yum:
         name: htop
-        state: absent
+        state: present
