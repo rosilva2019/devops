@@ -4,5 +4,5 @@
 
     - name: install the latest version of package RPM
       yum:
-        name: subversion
+        name: htop
         state: absent
